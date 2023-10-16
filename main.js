@@ -23,6 +23,9 @@ function updateCoffees(e) {
     coffees.forEach(function(coffee) {
         if (coffee.roast === selectedRoast) {
             filteredCoffees.push(coffee);
+            console.log(selectedRoast)
+        } else if(selectedRoast === 'All Roasts'){
+            filteredCoffees.push(coffee)
         }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
@@ -50,38 +53,28 @@ var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
 
-// let searcher = document.getElementById('#searchBar')
-// // searcher.addEventListener('click')
-// console.log(searcher)
-document.addEventListener('keyup', function (event){
-    let searcher = document.getElementById('searchBar')
-    let filter = searcher.value.toLowerCase()
-    // console.log(filter)
-let newList = ''
-   // let z = document.getElementById('coffees')
+//The searchIt() function searches coffees by name
+function searchIt () {
+    document.addEventListener('keyup', function (event) {
+        let searcher = document.getElementById('searchBar')
+        let filter = searcher.value.toLowerCase()
+        let newList = []
+        coffees.forEach(function(coffee) {
+            let searchCoff = coffee.name.toLowerCase()
+            let x = searchCoff.includes(filter)
+            if (x) {
+                newList.push(coffee)
+                tbody.innerHTML = renderCoffees(newList)
+            }
+        })
+    })
+}
 
-    const listItems = document.querySelector('#coffees');
-// console.log(z)
-
-
-    for(let i=0; i < coffees.length; i++){
-        // console.log(coffees[i].name)
-        let searchCoff = coffees[i].name.toLowerCase()
-
-       let x = searchCoff.includes(filter)
-        // console.log(x)
-        if(x === true){
-           let y = coffees[i].name
-            console.log(y)
-            // let p = y.push(newList)
-            y.style.display = ""
-        }
-    }
-})
-
-
-
+function addCoffee(){
+    // e.preventDefault();
+    let u = document.getElementById('#coffeeName')
+    console.log(u)
+}
 
 tbody.innerHTML = renderCoffees(coffees);
-
-submitButton.addEventListener('click', updateCoffees);
+submitButton.addEventListener('click', updateCoffees)
