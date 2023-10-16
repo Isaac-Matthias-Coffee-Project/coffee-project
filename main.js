@@ -70,22 +70,17 @@ function searchIt () {
     })
 }
 
+//ADD NEW COFFEE FUNCTIONALITY
 const addCoffeeButton = document.querySelector('#submitNew');
-
-const newCoffeeName = document.getElementById("coffeeName").value;
-
-const newCoffeeRoast = document.getElementById("add-roast");
-
 let id = 15
 addCoffeeButton.addEventListener('click', event => {
     event.preventDefault();
-    addCoffee();
+    const newCoffeeRoast = document.getElementById("add-roast").value;
+    const newCoffeeName = document.getElementById("coffeeName").value;
+    let newCoffee = {id: id++, name: newCoffeeName, roast: newCoffeeRoast}
+    coffees.push(newCoffee)
+    tbody.innerHTML = renderCoffees(coffees)
 });
-
-function addCoffee(){
-    console.log(    {id: `${id}`, name: `${newCoffeeName}`, roast: `${newCoffeeRoast}`}, )
-    id++
-}
 
 tbody.innerHTML = renderCoffees(coffees);
 submitButton.addEventListener('click', updateCoffees)
