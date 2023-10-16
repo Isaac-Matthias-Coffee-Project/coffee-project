@@ -2,10 +2,10 @@
 
 function renderCoffee(coffee) {
     var html = '<tr class="coffee">';
-    html += '<td>' + coffee.id + '</td>';
-    html += '<td>' + coffee.name + '</td>';
-    html += '<td>' + coffee.roast + '</td>';
-    html += '</tr>';
+    // html += '<td>' + coffee.id + '</td>';
+    html += '<h1>' + coffee.name + '</h1>';
+    html += '<p>' + coffee.roast + '</p>';
+    // html += '</tr>';
 
     return html;
 }
@@ -51,6 +51,51 @@ var coffees = [
 var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
+
+// let searcher = document.getElementById('#searchBar')
+// // searcher.addEventListener('click')
+// console.log(searcher)
+document.addEventListener('keyup', function (event){
+    let searcher = document.getElementById('searchBar')
+    let filter = searcher.value.toLowerCase()
+    // console.log(filter)
+let newList = ''
+   // let z = document.getElementById('coffees')
+
+    const listItems = document.querySelector('#coffees');
+// console.log(z)
+
+
+    for(let i=0; i < coffees.length; i++){
+        // console.log(coffees[i].name)
+        let searchCoff = coffees[i].name.toLowerCase()
+
+       let x = searchCoff.includes(filter)
+        // console.log(x)
+        if(x === true){
+           let y = coffees[i].name
+            console.log(y)
+            // let p = y.push(newList)
+            y.style.display = ""
+        }
+    }
+})
+
+// document.getElementById('searchInput').addEventListener('input', function (event) {
+//     const searchTerm = event.target.value.toLowerCase();
+//     const listItems = document.querySelectorAll('#itemList li');
+//
+//     listItems.forEach(function (item) {
+//         const itemText = item.textContent.toLowerCase();
+//
+//         if (itemText.includes(searchTerm)) {
+//             item.style.display = 'list-item';
+//         } else {
+//             item.style.display = 'none';
+//         }
+//     });
+// });
+
 
 tbody.innerHTML = renderCoffees(coffees);
 
