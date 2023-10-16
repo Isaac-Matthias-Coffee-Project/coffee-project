@@ -70,10 +70,21 @@ function searchIt () {
     })
 }
 
+const addCoffeeButton = document.querySelector('#submitNew');
+
+const newCoffeeName = document.getElementById("coffeeName").value;
+
+const newCoffeeRoast = document.getElementById("add-roast");
+
+let id = 15
+addCoffeeButton.addEventListener('click', event => {
+    event.preventDefault();
+    addCoffee();
+});
+
 function addCoffee(){
-    // e.preventDefault();
-    let u = document.getElementById('#coffeeName')
-    console.log(u)
+    console.log(    {id: `${id}`, name: `${newCoffeeName}`, roast: `${newCoffeeRoast}`}, )
+    id++
 }
 
 tbody.innerHTML = renderCoffees(coffees);
