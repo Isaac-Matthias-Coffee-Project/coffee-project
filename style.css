@@ -1,72 +1,27 @@
-/**{*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
-
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
+body {
+    background-color: #e5d2bb;
 }
 
-td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
+.card {
+    background-image: url("img/coffee-beans.jpeg");
+    color: white;
+}
+
+.coffeeList {
+    text-align: center;
 }
 
 .coffeeTitle{
     text-align: center;
 }
 
-/*.afterTitle{*/
-/*    width: 100%;*/
-/*}*/
-
-.container{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    /*width: 100dvh;*/
-    /*height: 100dvh;*/
+.button {
+    background-color: #634e3b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: .5em;
 }
-
-.coffeeInputs{
-    display: flex;
-    flex-direction: column;
-    border: 2px solid black;
-    width: 100dvh;
-    height: 100dvh;
-}
-
-.coffeeList{
-    /*border: 2px solid red;*/
-    /*width: 50%;*/
-    /*height: 50%;*/
-    width: 100dvh;
-    height: 100dvh;
-    /*display: flex;*/
-/*justify-content: space-between;*/
-}
-
-form{
-    margin-top: 1em;
-    margin-bottom: 10em;
-}
-
-.add{
-    margin-top: 5em;
-}
-
-.addCoff{
-    text-align: center;
-}
-
-
-p{
-    /*border: 2px solid red;*/
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 50%;
-    /*height: 10dvh;*/
-    word-break: break-all;
+.button:hover{
+    background-color: #886a50;
 }
