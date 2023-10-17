@@ -78,7 +78,8 @@ const addCoffeeButton = document.querySelector('#submitNew');
 addCoffeeButton.addEventListener('click', event => {
     event.preventDefault();
     const newCoffeeRoast = document.getElementById("add-roast").value;
-    const newCoffeeName = document.getElementById("coffeeName").value;
+    const newCoffeeNames = document.getElementById("coffeeName").value;
+    let newCoffeeName = newCoffeeNames.charAt(0).toUpperCase() + newCoffeeNames.slice(1);
     let newCoffee = {id: (coffees.length + 1), name: newCoffeeName, roast: newCoffeeRoast};
 
     coffees.push(newCoffee);
