@@ -32,7 +32,7 @@ function updateCoffees(e) {
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
-var coffees = [
+let coffees  = localStorage.getItem('coffeeArr') ? JSON.parse(localStorage.getItem('coffeeArr')) : [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
     {id: 3, name: 'Cinnamon', roast: 'light'},
@@ -55,7 +55,7 @@ var roastSelection = document.querySelector('#roast-selection');
 
 //The searchIt() function searches coffees by name
 function searchIt () {
-    document.addEventListener('keyup', function (event) {
+    // document.addEventListener('keyup', function (event) {
         let searcher = document.getElementById('searchBar')
         let filter = searcher.value.toLowerCase()
         let newList = []
@@ -67,31 +67,20 @@ function searchIt () {
                 tbody.innerHTML = renderCoffees(newList)
             }
         })
-    })
+    // })
 }
 
 //ADD NEW COFFEE FUNCTIONALITY
 const addCoffeeButton = document.querySelector('#submitNew');
-let id = 15
 addCoffeeButton.addEventListener('click', event => {
     event.preventDefault();
     const newCoffeeRoast = document.getElementById("add-roast").value;
     const newCoffeeName = document.getElementById("coffeeName").value;
-    let newCoffee = {id: id++, name: newCoffeeName, roast: newCoffeeRoast}
+    let newCoffee = {id: (coffees.length + 1), name: newCoffeeName, roast: newCoffeeRoast};
 
-    let newStringObj = JSON.stringify(newCoffee)
-
-    localStorage.setItem(
-        "newlyCreatedCoffee",
-        newStringObj
-    )
-
-    let newOne = localStorage.getItem('newlyCreatedCoffee')
-    let newOneParsed = JSON.parse(newOne)
-    console.log(newOneParsed)
-
-    coffees.push(newCoffee)
-    tbody.innerHTML = renderCoffees(coffees)
+    coffees.push(newCoffee);
+    localStorage.setItem("coffeeArr", JSON.stringify(coffees));
+    tbody.innerHTML = renderCoffees(coffees);
 });
 
 tbody.innerHTML = renderCoffees(coffees);
