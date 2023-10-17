@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #e5d2bb;
 }
@@ -25,3 +31,8 @@ body {
 .button:hover{
     background-color: #886a50;
 }
+
+.searchCoff{
+    text-align: center;
+}
+

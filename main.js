@@ -78,6 +78,18 @@ addCoffeeButton.addEventListener('click', event => {
     const newCoffeeRoast = document.getElementById("add-roast").value;
     const newCoffeeName = document.getElementById("coffeeName").value;
     let newCoffee = {id: id++, name: newCoffeeName, roast: newCoffeeRoast}
+
+    let newStringObj = JSON.stringify(newCoffee)
+
+    localStorage.setItem(
+        "newlyCreatedCoffee",
+        newStringObj
+    )
+
+    let newOne = localStorage.getItem('newlyCreatedCoffee')
+    let newOneParsed = JSON.parse(newOne)
+    console.log(newOneParsed)
+
     coffees.push(newCoffee)
     tbody.innerHTML = renderCoffees(coffees)
 });
